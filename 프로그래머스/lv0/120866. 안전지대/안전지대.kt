@@ -1,27 +1,38 @@
 class Solution {
-    fun solution(board: Array<IntArray>): String {
-        var answer: Int = 0
-        var boomMap = board.toMutableList()
-        var boom : MutableList<Int> = mutableListOf()
-        for(i in board[0].indices){
-            boom.add(-1)
-        }
-        boom.add(-1)
-        boom.add(-1)
-        
-        boomMap.add(0,boom.toIntArray())
-        boomMap.add(boomMap.size,boom.toIntArray())
-        
-        
-        for(i in 1.. boomMap.size -2){
-            boom = mutableListOf()
-            boom.add(-1)
-            for(j in boomMap[i].indices){
-                 boom.add(boomMap[i][j])
+    fun solution(board: Array<IntArray>): Int {
+        var answer = 0
+        val wrapBoard = Array(board.size + 2) { IntArray(board[0].size + 2) }
+
+        for (i in wrapBoard.indices) {
+            for (j in wrapBoard[i].indices) {
+                if (i == 0 || j == 0 || i == wrapBoard.size - 1 || j == wrapBoard[0].size - 1) {
+                    wrapBoard[i][j] = 1
+                }
+                if (i > 0 && i < wrapBoard.size - 1 && j > 0 && j < wrapBoard[0].size - 1) {
+                    if (board[i - 1][j - 1] == 1) {
+                        wrapBoard[i][j] = 1
+                        wrapBoard[i - 1][j - 1] = 1
+                        wrapBoard[i - 1][j] = 1
+                        wrapBoard[i - 1][j + 1] = 1
+                        wrapBoard[i][j - 1] = 1
+                        wrapBoard[i][j + 1] = 1
+                        wrapBoard[i + 1][j - 1] = 1
+                        wrapBoard[i + 1][j] = 1
+                        wrapBoard[i + 1][j + 1] = 1
+                    }
+                }
             }
-            boom.add(-1)
-            boomMap[i] = boom.toIntArray()
         }
-        return boomMap.toTypedArray().contentDeepToString()
+        
+        
+        
+        for (array in wrapBoard) {
+            for (e in array) {
+                if (e == 0) {
+                    answer++
+                }
+            }
+        }
+        return answer
     }
 }
