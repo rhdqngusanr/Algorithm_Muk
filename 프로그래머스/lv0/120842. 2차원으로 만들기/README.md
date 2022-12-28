@@ -1,10 +1,10 @@
 # [level 0] 2차원으로 만들기 - 120842 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/120842) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/120842?language=kotlin) 
 
 ### 성능 요약
 
-메모리: 63 MB, 시간: 14.90 ms
+메모리: 63.4 MB, 시간: 22.79 ms
 
 ### 구분
 
