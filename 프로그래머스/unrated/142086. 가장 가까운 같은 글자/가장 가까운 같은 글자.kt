@@ -2,7 +2,6 @@ class Solution {
     fun solution(s: String): IntArray {
         var answer = MutableList(s.length) {-1}
 
-        println(answer)
         for ((i, c) in s.withIndex()) {
             if (i == 0) {
                 continue
@@ -12,7 +11,6 @@ class Solution {
                 count++
                 if (s[j] == c) {
                     answer[i] = count
-                    println(answer[i])
                     break
                 }
             }
